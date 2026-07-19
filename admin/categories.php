@@ -23,3 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['add'])) {
         $message = 'success:Category "' . h($name) . '" added.';
     }
 }
+
+// Delete category
+if (!empty($_GET['delete'])) {
+    $id = (int)$_GET['delete'];
+    // Prevent deleting if reports use this category
+    $count = mysqli_fetch_assoc(mysqli_query($conn,
+        "SELECT COUNT(*) AS c FROM reports WHERE category_id = $id"))['c'];
+    if ($count > 0) {
+        $message = 'error:Cannot delete — ' . $count . ' report(s) use this category.';
+    } else {
+        mysqli_query($conn, "DELETE FROM categories WHERE category_id = $id");
+        $message = 'success:Category deleted.';
+    }
+}
