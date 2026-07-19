@@ -37,3 +37,10 @@ if (!empty($_GET['delete'])) {
         $message = 'success:Category deleted.';
     }
 }
+
+$categories = mysqli_fetch_all(mysqli_query($conn,
+    "SELECT c.*, COUNT(r.report_id) AS report_count
+     FROM categories c LEFT JOIN reports r ON c.category_id = r.category_id
+     GROUP BY c.category_id ORDER BY c.name"), MYSQLI_ASSOC);
+
+[$mtype, $mtext] = $message ? explode(':', $message, 2) : ['', ''];
