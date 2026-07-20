@@ -13,3 +13,11 @@ $summary = mysqli_fetch_assoc(mysqli_query($conn,
         SUM(status='resolved')    AS resolved,
         SUM(status='rejected')    AS rejected
      FROM reports"));
+
+// Reports by category (for bar chart)
+$cat_data = mysqli_fetch_all(mysqli_query($conn,
+    "SELECT c.name, COUNT(r.report_id) AS cnt
+     FROM categories c
+     LEFT JOIN reports r ON c.category_id = r.category_id
+     GROUP BY c.category_id
+     ORDER BY cnt DESC"), MYSQLI_ASSOC);
