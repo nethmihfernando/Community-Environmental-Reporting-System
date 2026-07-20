@@ -56,3 +56,14 @@ $categories = mysqli_fetch_all(mysqli_query($conn,
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body style="margin:0">
+<div class="d-flex" style="min-height:100vh">
+    <aside class="admin-sidebar" style="min-height:100vh">
+        <div class="sidebar-brand"><h5>🌿 EcoReport</h5></div>
+        <nav class="nav flex-column mt-2">
+            <a class="nav-link" href="dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a class="nav-link" href="manage_reports.php"><i class="fas fa-flag"></i> Manage Reports</a>
+            <a class="nav-link active" href="categories.php"><i class="fas fa-tags"></i> Categories</a>
+            <hr style="border-color:rgba(255,255,255,.1);margin:.5rem 1rem">
+            <a class="nav-link" href="../logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </aside>
