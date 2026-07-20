@@ -105,3 +105,40 @@ $categories = mysqli_fetch_all(mysqli_query($conn,
                         </div>
                     </div>
                 </div>
+                <!-- Categories Table -->
+                <div class="col-md-8">
+                    <div class="card-eco">
+                        <div class="card-header-eco">Existing Categories</div>
+                        <div class="table-responsive">
+                            <table class="table table-eco mb-0">
+                                <thead><tr><th>Icon</th><th>Name</th><th>Description</th><th>Reports</th><th></th></tr></thead>
+                                <tbody>
+                                    <?php foreach ($categories as $c): ?>
+                                    <tr>
+                                        <td><i class="fas <?= h($c['icon']) ?> text-eco"></i></td>
+                                        <td><strong><?= h($c['name']) ?></strong></td>
+                                        <td class="text-muted small"><?= h(mb_substr($c['description'],0,60)) ?></td>
+                                        <td><span class="badge bg-secondary"><?= $c['report_count'] ?></span></td>
+                                        <td>
+                                            <?php if ($c['report_count'] == 0): ?>
+                                            <a href="?delete=<?= $c['category_id'] ?>"
+                                               class="btn btn-sm btn-outline-danger"
+                                               onclick="return confirm('Delete this category?')">Delete</a>
+                                            <?php else: ?>
+                                            <span class="text-muted small">In use</span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
