@@ -67,3 +67,41 @@ $categories = mysqli_fetch_all(mysqli_query($conn,
             <a class="nav-link" href="../logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
     </aside>
+    <div class="d-flex flex-column flex-grow-1">
+        <div class="admin-topbar"><h6>Manage Categories</h6></div>
+        <div class="admin-content">
+            <?php if ($mtext): ?>
+            <div class="alert alert-eco alert-<?= $mtype === 'success' ? 'success' : 'danger' ?> mb-4">
+                <?= $mtext ?>
+            </div>
+            <?php endif; ?>
+            <div class="row g-4">
+                <!-- Add Category Form -->
+                <div class="col-md-4">
+                    <div class="card-eco">
+                        <div class="card-header-eco">Add Category</div>
+                        <div class="p-4">
+                            <form method="POST" class="form-eco">
+                                <input type="hidden" name="add" value="1">
+                                <div class="mb-3">
+                                    <label class="form-label">Name *</label>
+                                    <input type="text" name="name" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Description</label>
+                                    <textarea name="description" class="form-control" rows="2"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">FontAwesome Icon class</label>
+                                    <input type="text" name="icon" class="form-control"
+                                           value="fa-exclamation-triangle"
+                                           placeholder="fa-trash">
+                                    <small class="text-muted">
+                                        Find icons at <a href="https://fontawesome.com/icons" target="_blank">fontawesome.com</a>
+                                    </small>
+                                </div>
+                                <button type="submit" class="btn btn-eco-primary w-100">Add Category</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
