@@ -51,3 +51,31 @@ $cat_counts = json_encode(array_column($cat_data, 'cnt'));
 </head>
 <body style="margin:0;overflow:hidden">
 <div class="d-flex" style="height:100vh">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-brand">
+            <h5>🌿 EcoReport</h5>
+            <div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:.3rem">
+                Admin Panel
+            </div>
+        </div>
+        <nav class="nav flex-column mt-2">
+            <a class="nav-link active" href="dashboard.php">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </a>
+            <a class="nav-link" href="manage_reports.php">
+                <i class="fas fa-flag"></i> Manage Reports
+            </a>
+            <a class="nav-link" href="categories.php">
+                <i class="fas fa-tags"></i> Categories
+            </a>
+            <hr style="border-color:rgba(255,255,255,.1);margin:.5rem 1rem">
+            <a class="nav-link" href="../index.php">
+                <i class="fas fa-globe"></i> View Site
+            </a>
+            <a class="nav-link" href="../logout.php">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </nav>
+    </aside>
