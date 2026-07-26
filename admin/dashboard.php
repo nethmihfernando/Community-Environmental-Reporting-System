@@ -186,3 +186,38 @@ $cat_counts = json_encode(array_column($cat_data, 'cnt'));
                     </div>
                 </div>
             </div>
+
+                    </div><!-- /admin-content -->
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Chart.js from CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+// ── Bar Chart: Reports by Category ─────────────────────────────────────────
+// PHP has already JSON-encoded our data above.
+const catLabels = <?= $cat_labels ?>;
+const catCounts = <?= $cat_counts ?>;
+
+new Chart(document.getElementById('catChart'), {
+    type: 'bar',
+    data: {
+        labels:   catLabels,
+        datasets: [{
+            label:           'Reports',
+            data:            catCounts,
+            backgroundColor: 'rgba(45,122,79,.75)',
+            borderColor:     'rgba(26,71,49,1)',
+            borderWidth:     1.5,
+            borderRadius:    6,
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: { beginAtZero: true, ticks: { stepSize: 1 } }
+        }
+    }
+});
