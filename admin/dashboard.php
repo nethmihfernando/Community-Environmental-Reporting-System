@@ -149,3 +149,40 @@ $cat_counts = json_encode(array_column($cat_data, 'cnt'));
                     </div>
                 </div>
             </div>
+
+                        <!-- Recent Reports Table -->
+            <div class="card-eco">
+                <div class="card-header-eco d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-list me-2"></i>Recent Reports</span>
+                    <a href="manage_reports.php" class="btn btn-sm btn-eco-outline"
+                       style="color:#fff;border-color:rgba(255,255,255,.4)">View All</a>
+                </div>
+                <div class="p-0">
+                    <div class="table-responsive">
+                        <table class="table table-eco mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th><th>Title</th><th>Category</th>
+                                    <th>Reporter</th><th>Status</th><th>Date</th><th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($recent as $r): ?>
+                                <tr>
+                                    <td class="text-muted small"><?= $r['report_id'] ?></td>
+                                    <td><strong><?= h(mb_substr($r['title'], 0, 40)) ?></strong></td>
+                                    <td><span class="badge bg-secondary"><?= h($r['cat']) ?></span></td>
+                                    <td><?= h($r['full_name']) ?></td>
+                                    <td><?= status_badge($r['status']) ?></td>
+                                    <td class="text-muted small"><?= date('M j, Y', strtotime($r['created_at'])) ?></td>
+                                    <td>
+                                        <a href="manage_reports.php?edit=<?= $r['report_id'] ?>"
+                                           class="btn btn-sm btn-eco-outline py-0 px-2">Edit</a>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
