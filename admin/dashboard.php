@@ -221,3 +221,32 @@ new Chart(document.getElementById('catChart'), {
         }
     }
 });
+
+// ── Doughnut Chart: Reports by Status ──────────────────────────────────────
+new Chart(document.getElementById('statusChart'), {
+    type: 'doughnut',
+    data: {
+        labels:   ['Pending', 'In Progress', 'Resolved', 'Rejected'],
+        datasets: [{
+            data: [
+                <?= $summary['pending'] ?>,
+                <?= $summary['in_progress'] ?>,
+                <?= $summary['resolved'] ?>,
+                <?= $summary['rejected'] ?>
+            ],
+            backgroundColor: ['#f39c12','#3498db','#2d7a4f','#e74c3c'],
+            borderWidth:     2,
+            borderColor:     '#fff'
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { position: 'bottom', labels: { padding: 16, font: { size: 13 } } }
+        },
+        cutout: '60%'
+    }
+});
+</script>
+</body>
+</html>
