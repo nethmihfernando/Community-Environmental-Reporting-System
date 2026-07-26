@@ -125,3 +125,27 @@ $cat_counts = json_encode(array_column($cat_data, 'cnt'));
                     </div>
                 </div>
             </div>
+
+            <!-- Charts row -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-7">
+                    <div class="card-eco h-100">
+                        <div class="card-header-eco">
+                            <i class="fas fa-chart-bar me-2"></i>Reports by Category
+                        </div>
+                        <div class="p-4">
+                            <canvas id="catChart" height="240"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card-eco h-100">
+                        <div class="card-header-eco">
+                            <i class="fas fa-chart-pie me-2"></i>Reports by Status
+                        </div>
+                        <div class="p-4 d-flex justify-content-center">
+                            <canvas id="statusChart" style="max-height:240px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
