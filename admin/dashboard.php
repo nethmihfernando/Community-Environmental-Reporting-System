@@ -79,3 +79,49 @@ $cat_counts = json_encode(array_column($cat_data, 'cnt'));
             </a>
         </nav>
     </aside>
+
+    <!-- ── MAIN CONTENT ── -->
+    <div class="d-flex flex-column flex-grow-1" style="overflow:hidden">
+
+        <!-- Top bar -->
+        <div class="admin-topbar">
+            <h6>Dashboard Overview</h6>
+            <span class="text-muted small">
+                Welcome, <?= h($_SESSION['full_name']) ?> &nbsp;·&nbsp;
+                <?= date('l, F j, Y') ?>
+            </span>
+        </div>
+
+        <div class="admin-content" style="overflow-y:auto">
+
+            <!-- Stat Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-xl-3">
+                    <div class="stat-card stat-total">
+                        <div class="stat-number"><?= $summary['total'] ?></div>
+                        <div class="stat-label">Total Reports</div>
+                        <i class="fas fa-database stat-icon"></i>
+                    </div>
+                </div>
+                <div class="col-6 col-xl-3">
+                    <div class="stat-card stat-pending">
+                        <div class="stat-number"><?= $summary['pending'] ?></div>
+                        <div class="stat-label">Pending Review</div>
+                        <i class="fas fa-clock stat-icon"></i>
+                    </div>
+                </div>
+                <div class="col-6 col-xl-3">
+                    <div class="stat-card stat-progress">
+                        <div class="stat-number"><?= $summary['in_progress'] ?></div>
+                        <div class="stat-label">In Progress</div>
+                        <i class="fas fa-spinner stat-icon"></i>
+                    </div>
+                </div>
+                <div class="col-6 col-xl-3">
+                    <div class="stat-card stat-resolved">
+                        <div class="stat-number"><?= $summary['resolved'] ?></div>
+                        <div class="stat-label">Resolved</div>
+                        <i class="fas fa-check-circle stat-icon"></i>
+                    </div>
+                </div>
+            </div>
