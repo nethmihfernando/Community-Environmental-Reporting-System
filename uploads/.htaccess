@@ -1,0 +1,7 @@
+# Security: Block PHP execution inside the uploads folder.
+# Without this, an attacker could upload a PHP file renamed as image.jpg.php
+# and execute arbitrary code on your server.
+<FilesMatch "\.php$">
+    Deny from all
+</FilesMatch>
+php_flag engine off
