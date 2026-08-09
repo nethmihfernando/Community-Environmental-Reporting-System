@@ -1,12 +1,5 @@
 <?php
-/**
- * admin/manage_reports.php — View, filter, update, and delete reports
- *
- * Features:
- *  - Filter by status, category, search keyword
- *  - Inline status update form
- *  - Delete report
- */
+
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../config/auth.php';
 

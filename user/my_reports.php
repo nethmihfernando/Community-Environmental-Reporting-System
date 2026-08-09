@@ -1,7 +1,5 @@
 <?php
-/**
- * user/my_reports.php — View my submitted reports + delete + status tracking
- */
+
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../config/auth.php';
 
