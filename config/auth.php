@@ -1,6 +1,5 @@
 <?php
-// Start a session if one isn't already running.
-// Sessions let PHP remember who is logged in across page requests.
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
