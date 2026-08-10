@@ -1,7 +1,6 @@
 <?php
 /**
- * map_view.php — Full-screen public map of all reports
- * Uses Leaflet.js + OpenStreetMap (no API key needed)
+ * Full-screen public map of all reports
  */
 require_once __DIR__ . '/config/db.php';
 require_once __DIR__ . '/config/auth.php';
