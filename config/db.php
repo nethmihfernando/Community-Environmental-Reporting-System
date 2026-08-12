@@ -10,7 +10,19 @@ define('DB_CHARSET',  'utf8mb4');
 
 // ── Application settings ──────────────────────────────────────────────────────
 define('SITE_NAME',   'EcoReport');
-define('SITE_URL',    'http://localhost/envreport');
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+$host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
+
+// This file lives in /config, so the project root is one directory up.
+$project_root = str_replace('\\', '/', dirname(__DIR__));
+$doc_root     = rtrim(str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
+
+$base_path = '';
+if ($doc_root !== '' && str_starts_with($project_root, $doc_root)) {
+    $base_path = substr($project_root, strlen($doc_root)); // e.g. "/envreport"
+}
+
+define('SITE_URL', $protocol . $host . $base_path);
 define('UPLOAD_DIR',  __DIR__ . '/../uploads/');   // absolute path for file operations
 define('UPLOAD_URL',  SITE_URL . '/uploads/');     // public URL for displaying images
 define('MAX_FILE_SIZE', 5 * 1024 * 1024);          // 5 MB maximum upload size
